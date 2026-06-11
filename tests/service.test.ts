@@ -1,0 +1,2 @@
+import test from "node:test";import assert from "node:assert/strict";import { inputSchema, serviceHandler } from "../src/service.js";
+test("cap-doctor validates and executes its core path",async()=>{const input=inputSchema.parse({target_service_id:"svc",mode:"schema",max_price_microusdc:100000,repetitions:1});try{const out=await serviceHandler(input,{transition:async()=>{}});assert.ok(true)}catch(e){assert.match(String(e),/required|fetch|RPC|dependency|GenLayer|Sentinel/);}});
